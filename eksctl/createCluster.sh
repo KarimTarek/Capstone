@@ -1,0 +1,12 @@
+eksctl create cluster \
+--name prod \
+--version 1.16 \
+--region us-west-2 \
+--nodegroup-name standard-workers \
+--node-type t2.small \
+--nodes 2 \
+--nodes-min 1 \
+--nodes-max 2 \
+--ssh-access \
+--ssh-public-key hom1 \
+--managed

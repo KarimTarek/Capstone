@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pressthebutton
+  namespace: pressthebutton
+  labels:
+    app: pressthebutton
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pressthebutton
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pressthebutton
+    spec:
+      containers:
+        - name: nginx
+          image: 'nginx:1.14.2'
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

@@ -4,15 +4,45 @@ pipeline {
    	}
    	
    	stages {
-      	stage('Hello') {
+      	stage('Cloning the repo') {
          	steps {
-	            echo 'Hello World'
-	            echo 'testing webhook'
-	            // sh '''docker ps --all'''
-	            // sh '''kubectl get nodes'''
 	            git credentialsId: 'b36b229f-4fc6-44a8-91e4-f0a9967cb65f', url: 'https://github.com/KarimTarek/Capstone.git'
          	}
       	}
+
+      	stage('running lint checks') {
+         	steps {
+         		dir('pressTheButton') {
+         			sh 'npx eslint index.js'
+         		}	            
+         	}
+      	}
+
+      	stage('building docker image') {
+         	steps {
+         		dir('pressTheButton') {
+         			sh 'docker build -t k4r1m/pressthebutton .'
+         		}	            
+         	}
+      	}
+
+      	stage('pushing the image to docker hub') {
+         	steps {
+         		script {
+         			withDockerRegistry(credentialsId: 'docker') {
+					    sh 'docker push k4r1m/pressthebutton'
+					}
+         		}
+         	}
+      	}
+
+      	// stage('deploying changes using rolling out deployment') {
+       //   	steps {
+       //   		dir('kubernetes') {
+       //   			// sh ''
+       //   		}	            
+       //   	}
+      	// }
    	}
 
  //   	stage('deploy to EKS using rolling deployment') {

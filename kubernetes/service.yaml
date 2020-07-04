@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pressthebutton-service
+  namespace: pressthebutton
+  labels:
+    app: my-app
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+spec:
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 32636
+  selector:
+    app: pressthebutton
+  clusterIP: 10.100.159.68
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
