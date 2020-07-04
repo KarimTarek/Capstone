@@ -13,7 +13,7 @@ pipeline {
       	stage('running lint checks') {
          	steps {
          		dir('pressTheButton') {
-         			sh 'sudo npx eslint index.js'
+         			sh 'npx eslint index.js'
          		}	            
          	}
       	}
