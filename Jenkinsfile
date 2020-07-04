@@ -9,7 +9,7 @@ pipeline {
 	            echo 'Hello World'
 	            // sh '''docker ps --all'''
 	            // sh '''kubectl get nodes'''
-	            git credentialsId: 'github', url: 'https://github.com/KarimTarek/Capstone.git'
+	            git credentialsId: 'b36b229f-4fc6-44a8-91e4-f0a9967cb65f', url: 'https://github.com/KarimTarek/Capstone.git'
          	}
       	}
    	}
