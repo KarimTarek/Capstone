@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: pressthebutton
-          image: 'k4r1m/pressthebutton:latest'
+          image: 'k4r1m/pressthebutton'
           ports:
             - containerPort: 8000
               protocol: TCP
