@@ -12,7 +12,6 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 32636
   selector:
     app: pressthebutton
   type: LoadBalancer
