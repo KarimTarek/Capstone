@@ -1,14 +1,19 @@
 # capstone
 
 Folder structure explanation:
+
 	1- eksctl cloudformation:
 		this folder contains the bash script which contains the eksctl cli to create the kubernetes cluster
+	
 	2- kubernetes:
 		this folder conatains all the deployment and service YAML files to be applied to the kubernetes cluster
+	
 	3- pressTheButton:
 		Nodejs app which includes the docker file
+	
 	4- Jenkinsfile:
 		Jenkinsfile which containts the pipeline stages in order to deploy our code to eks
+	
 	5- Readme:
 		Readme
 
