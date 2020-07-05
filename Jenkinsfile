@@ -12,42 +12,40 @@ pipeline {
 
       	stage('running lint checks') {
          	steps {
-         		nodejs('Nodejs') {
-				    sh 'node -v'
-				}
-         		// dir('pressTheButton') {
-         			// sh 'node -v'
-         			// sh 'npm install eslint'
-         			// sh 'npx eslint index.js'
-         		// }	            
-         	}
-      	}
-
-      	stage('building docker image') {
-         	steps {
          		dir('pressTheButton') {
-         			sh 'docker build -t k4r1m/pressthebutton .'
+         			nodejs('Nodejs') {
+				    	sh 'npx eslint index.js'
+					}
          		}	            
          	}
       	}
 
-      	stage('pushing the image to docker hub') {
+     //  	stage('building docker image') {
+     //     	steps {
+     //     		dir('pressTheButton') {
+     //     			sh 'docker build -t k4r1m/pressthebutton .'
+     //     		}	            
+     //     	}
+     //  	}
+
+     //  	stage('pushing the image to docker hub') {
+     //     	steps {
+     //     		script {
+     //     			withDockerRegistry(credentialsId: 'docker') {
+					//     sh 'docker push k4r1m/pressthebutton'
+					// }
+     //     		}
+     //     	}
+     //  	}
+
+      	stage('deploying changes using rolling out deployment') {
          	steps {
-         		script {
-         			withDockerRegistry(credentialsId: 'docker') {
-					    sh 'docker push k4r1m/pressthebutton'
-					}
-         		}
+         		dir('kubernetes') {
+         			sh 'kubectl apply -f deployment.yaml'
+         			sh 'kubectl apply -f service.yaml'
+         		}	            
          	}
       	}
-
-      	// stage('deploying changes using rolling out deployment') {
-       //   	steps {
-       //   		dir('kubernetes') {
-       //   			// sh ''
-       //   		}	            
-       //   	}
-      	// }
    	}
 
  //   	stage('deploy to EKS using rolling deployment') {
