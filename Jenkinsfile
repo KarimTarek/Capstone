@@ -12,7 +12,7 @@ pipeline {
 
       	stage('running lint checks') {
          	steps {
-         		nodejs {
+         		nodejs(nodeJSInstallationName: 'Node 12.x'){
 				    sh 'node -v'
 				}
          		// dir('pressTheButton') {
