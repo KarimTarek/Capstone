@@ -12,10 +12,11 @@ pipeline {
 
       	stage('running lint checks') {
          	steps {
-         		dir('pressTheButton') {
+         		// dir('pressTheButton') {
+         			sh 'node -v'
          			sh 'npm install eslint'
          			sh 'npx eslint index.js'
-         		}	            
+         		// }	            
          	}
       	}
 
