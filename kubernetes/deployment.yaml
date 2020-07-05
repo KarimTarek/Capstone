@@ -20,12 +20,19 @@ spec:
         - name: pressthebutton
           image: 'k4r1m/pressthebutton:latest'
           ports:
-            - containerPort: 80
+            - containerPort: 8000
               protocol: TCP
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+               path: /
+               port: 8000
+               initialDelaySeconds: 5
+               periodSeconds: 5
+               successThreshold: 1
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
