@@ -27,12 +27,10 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: Always
           readinessProbe:
-            httpGet:
-               path: /
-               port: 8000
-               initialDelaySeconds: 5
-               periodSeconds: 5
-               successThreshold: 1
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
