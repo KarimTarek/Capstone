@@ -38,7 +38,7 @@ pipeline {
          	}
       	}
 
-      	stage('deploying changes using rolling out deployment') {
+      	stage('deploying changes using rolling updates') {
          	steps {
          		dir('kubernetes') {
          			sh 'kubectl apply -f deployment.yaml'
@@ -48,14 +48,4 @@ pipeline {
          	}
       	}
    	}
-
- //   	stage('deploy to EKS using rolling deployment') {
-	// 	steps {
-	// 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-	// 			sh '''
-	// 				docker build -t andresaaap/cloudcapstone:$BUILD_ID .
-	// 			'''
-	// 		}
-	// 	}
-	// }
 }
