@@ -20,23 +20,23 @@ pipeline {
          	}
       	}
 
-     //  	stage('building docker image') {
-     //     	steps {
-     //     		dir('pressTheButton') {
-     //     			sh 'docker build -t k4r1m/pressthebutton .'
-     //     		}	            
-     //     	}
-     //  	}
+      	stage('building docker image') {
+         	steps {
+         		dir('pressTheButton') {
+         			sh 'docker build -t k4r1m/pressthebutton .'
+         		}	            
+         	}
+      	}
 
-     //  	stage('pushing the image to docker hub') {
-     //     	steps {
-     //     		script {
-     //     			withDockerRegistry(credentialsId: 'docker') {
-					//     sh 'docker push k4r1m/pressthebutton'
-					// }
-     //     		}
-     //     	}
-     //  	}
+      	stage('pushing the image to docker hub') {
+         	steps {
+         		script {
+         			withDockerRegistry(credentialsId: 'docker') {
+					    sh 'docker push k4r1m/pressthebutton'
+					}
+         		}
+         	}
+      	}
 
       	stage('deploying changes using rolling out deployment') {
          	steps {
