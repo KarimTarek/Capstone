@@ -1,6 +1,6 @@
 $(function() {
 
-  var colors = ['red', 'blue', 'green', 'black'],
+  var colors = ['red', 'blue', 'green', 'yellow'],
     color;
 
   $('#target').click(function() {
