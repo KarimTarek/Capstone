@@ -43,7 +43,7 @@ pipeline {
          		dir('kubernetes') {
          			sh 'kubectl apply -f deployment.yaml'
          			sh 'kubectl apply -f service.yaml'
-         			sh 'kubectl rollout restart deployment/pressthebutton'
+         			sh 'kubectl rollout -n pressthebutton restart deployment/pressthebutton'
          		}	            
          	}
       	}
