@@ -15,7 +15,6 @@ spec:
       nodePort: 32636
   selector:
     app: pressthebutton
-  clusterIP: 10.100.159.68
   type: LoadBalancer
   sessionAffinity: None
   externalTrafficPolicy: Cluster

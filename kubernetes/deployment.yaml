@@ -17,8 +17,8 @@ spec:
         app: pressthebutton
     spec:
       containers:
-        - name: nginx
-          image: 'nginx:1.14.2'
+        - name: pressthebutton
+          image: 'k4r1m/pressthebutton:latest'
           ports:
             - containerPort: 80
               protocol: TCP
