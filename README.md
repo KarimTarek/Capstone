@@ -14,6 +14,7 @@ Folder structure explanation:
 
 
 Steps taken to complete the project:
+
 	1- Installed aws client using the IAM access key and secret key to prepare the environment for using eksctl
 	
 	2- using eksctl in the bash script inside eksctl folder in order to create the kubernetes cluster on AWS using cloud formation (I had to install the dashboard (Kubernetes GUI) to be able to track things easily)
