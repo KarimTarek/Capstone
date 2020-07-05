@@ -15,7 +15,7 @@ Folder structure explanation:
 
 Steps taken to complete the project:
 	1- Installed aws client using the IAM access key and secret key to prepare the environment for using eksctl
-	2- using eksctl in the bash script insice eksctl folder in order to create the kubernetes cluster on AWS using cloud formation
+	2- using eksctl in the bash script insice eksctl folder in order to create the kubernetes cluster on AWS using cloud formation as well as installing the dashboard (Kubernetes GUI) to be able to track things easily
 	3- Spin up an EC2 instance just like what we did in the previous project to install jenkins and all the plugins i needed to complete the pipeline also installed docker, aws and kubectl cli tools (including kubeconfig file)
 	4- Implemented my own simple node js application that is just a button at the middle of the screen which changes the color of the background every time you click it
 	5- Installed using npm "ESlint" which is a package used for linting and checking out syntax problems
